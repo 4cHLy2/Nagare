@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nagare
+  labels:
+    app.kubernetes.io/name: nagare
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: nagare
+  ports:
+    - name: http
+      port: 80
+      targetPort: http

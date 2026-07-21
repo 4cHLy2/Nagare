@@ -1,0 +1,29 @@
+# optional and cluster-specific. edit host / class / tls to match your setup.
+# leaving cert-manager + reflector hints since that's the usual combo, drop what you don't use.
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nagare
+  labels:
+    app.kubernetes.io/name: nagare
+  # uncomment what you need:
+  # annotations:
+  #   cert-manager.io/cluster-issuer: letsencrypt-prod
+  #   nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  # ingressClassName: nginx
+  rules:
+    - host: nagare.example.com     # change me
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: nagare
+                port:
+                  name: http
+  tls:
+    - hosts:
+        - nagare.example.com       # change me
+      secretName: nagare-tls       # cert-manager makes this, or reflector mirrors it

@@ -1,0 +1,25 @@
+# builds from source in the container, so keep local junk out
+node_modules
+dist
+dist-ssr
+
+.git
+.gitignore
+.vscode
+.idea
+.DS_Store
+*.local
+
+.env
+.env.*
+
+Dockerfile
+.dockerignore
+docker-compose*.yml
+deploy
+.github
+
+*.md
+docs
+memory
+.playwright-mcp
