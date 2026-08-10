@@ -96,35 +96,3 @@ docker run --rm -p 80:80 nagare
 ```
 
 Health endpoint is `/healthz`, the container's HEALTHCHECK uses it.
-
-## kubernetes
-
-`deploy/k8s/` - Deployment, Service, optional Ingress, glued with Kustomize.
-Push the image somewhere, point the manifest at it, fix the ingress
-host/class/TLS for your cluster:
-
-```bash
-kustomize edit set image nagare=registry.example.com/nagare:1.2.3
-kubectl apply -k deploy/k8s
-```
-
-cert-manager / reflector annotations are left commented out, uncomment whatever
-your cluster runs. Delete `ingress.yaml` if routing lives elsewhere. Probes hit
-`/healthz`.
-
-## known rough edges
-
-- no tests. CI runs lint + tsc and that's the whole gate
-- palette colours are assigned by node index, so inserting an income source
-  shifts every colour after it
-- `validateModel()` in `lib/sankey.ts` is dead code, the import path doesn't
-  call it yet
-- categories only go two levels deep (category -> items). deeper budgets get
-  flattened on import
-- panel open/closed state isn't remembered between reloads
-
-## stack
-
-React 19, TypeScript, Vite, [d3-sankey](https://github.com/d3/d3-sankey),
-[Zustand](https://github.com/pmndrs/zustand),
-[Catppuccin](https://github.com/catppuccin/catppuccin) colours, Yarn via Corepack.
