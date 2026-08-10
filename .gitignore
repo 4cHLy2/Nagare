@@ -1,0 +1,22 @@
+node_modules
+dist
+dist-ssr
+*.local
+*.tsbuildinfo
+
+.env
+.env.*
+
+# editors / os junk
+.DS_Store
+.idea
+.vscode/*
+!.vscode/extensions.json
+
+*.log
+yarn-debug.log*
+yarn-error.log*
+
+# scratch
+scratch/
+*.bak

@@ -1,0 +1,24 @@
+# build happens in the container, keep the context small
+node_modules
+dist
+dist-ssr
+
+.git
+.gitignore
+.vscode
+.idea
+.DS_Store
+*.local
+
+.env
+.env.*
+
+Dockerfile
+.dockerignore
+docker-compose*.yml
+deploy
+.github
+
+*.md
+docs
+scratch
