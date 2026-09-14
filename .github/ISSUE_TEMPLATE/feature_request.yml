@@ -1,0 +1,43 @@
+name: Feature request
+description: Suggest something Nagare should do
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Nagare is a local-only budget Sankey tool: no backend, no accounts, no
+        database, and that isn't changing. Ideas that need a server won't land —
+        see [CONTRIBUTING.md](https://github.com/4cHLy2/Nagare/blob/main/CONTRIBUTING.md).
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What can't you do today? Describe the problem, not the solution.
+      placeholder: >
+        I split rent with a flatmate and there's no way to show that half of it
+        comes back in.
+    validations:
+      required: true
+
+  - type: textarea
+    id: idea
+    attributes:
+      label: What you have in mind
+      description: Optional. Sketches, screenshots and napkin maths all welcome.
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: What you tried instead
+      description: Workarounds with the current features, or how other tools do it.
+
+  - type: checkboxes
+    id: constraints
+    attributes:
+      label: Fits the project
+      options:
+        - label: Works with no backend, no account and no network calls
+          required: true
+        - label: I checked the open issues for this already
+          required: true

@@ -1,0 +1,78 @@
+name: Bug report
+description: Something in Nagare behaves wrong
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Security bug? Stop here and use
+        [private reporting](https://github.com/4cHLy2/Nagare/security/advisories/new)
+        instead.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: And what you expected instead.
+      placeholder: |
+        Dragged the Rent node, reloaded, it snapped back to the auto layout.
+        Expected the position to stick.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+
+  - type: textarea
+    id: budget
+    attributes:
+      label: Budget JSON (optional)
+      description: >
+        `Export → JSON` if the bug needs a specific budget to show up.
+        Remove anything you'd rather not publish first — issues are public.
+      render: json
+
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Commit SHA, release, or image tag.
+      placeholder: "main @ 3409ee0 / ghcr.io/4chly2/nagare:latest"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: how-running
+    attributes:
+      label: Running it how
+      options:
+        - yarn dev
+        - yarn build + yarn preview
+        - Docker image / docker compose
+        - the GitHub Pages demo
+        - other (say below)
+    validations:
+      required: true
+
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and OS
+      placeholder: "Firefox 145, Fedora 43"
+    validations:
+      required: true
+
+  - type: textarea
+    id: console
+    attributes:
+      label: Console errors
+      description: Anything red in devtools.
+      render: shell
