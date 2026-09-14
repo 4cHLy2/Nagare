@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Report a security vulnerability
+    url: https://github.com/4cHLy2/Nagare/security/advisories/new
+    about: Privately, never as a public issue. See SECURITY.md.
+  - name: How to contribute
+    url: https://github.com/4cHLy2/Nagare/blob/main/CONTRIBUTING.md
+    about: Setup, branch model, and what does and doesn't fit the project.

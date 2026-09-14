@@ -6,13 +6,18 @@
 
 **_See where your money actually goes._**
 
+[![Live demo](https://img.shields.io/badge/try%20it-live%20demo-CBA6F7?style=flat-square&logo=github&logoColor=white)](https://4chly2.github.io/Nagare/)
+
 [![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black&style=flat-square)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white&style=flat-square)](https://www.typescriptlang.org)
 [![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white&style=flat-square)](https://vite.dev)
 [![d3-sankey](https://img.shields.io/badge/d3--sankey-layout-F9A03C?style=flat-square)](https://github.com/d3/d3-sankey)
 ![Client-side](https://img.shields.io/badge/backend-none%20·%20100%25%20local-A6E3A1?style=flat-square)
+[![License: MIT](https://img.shields.io/badge/license-MIT-89B4FA?style=flat-square)](LICENSE)
 
-<img src="docs/screenshots/hero.png" width="860" alt="Nagare rendering a monthly budget as a Sankey diagram" />
+<a href="https://4chly2.github.io/Nagare/"><img src="docs/screenshots/hero.png" width="860" alt="Nagare rendering a monthly budget as a Sankey diagram" /></a>
+
+**[→ 4chly2.github.io/Nagare](https://4chly2.github.io/Nagare/)**
 
 </div>
 
@@ -64,6 +69,10 @@ of the way a chart library wanted.
 
 ## running it
 
+Or don't: **[4chly2.github.io/Nagare](https://4chly2.github.io/Nagare/)** is
+the same build, deployed from `main` on every push. Still no backend — your
+budget stays in that browser's `localStorage` and I never see it.
+
 Yarn via [Corepack](https://github.com/nodejs/corepack), version's pinned in
 `package.json`.
 
@@ -96,3 +105,31 @@ docker run --rm -p 80:80 nagare
 ```
 
 Health endpoint is `/healthz`, the container's HEALTHCHECK uses it.
+
+## contributing
+
+Issues and PRs are welcome. [CONTRIBUTING.md](CONTRIBUTING.md) has the setup,
+the branch model (PRs go to `dev`, not `main`), what CI checks, and which ideas
+aren't going to land. Be decent to each other:
+[Code of Conduct](CODE_OF_CONDUCT.md).
+
+Bug report or feature idea: [open an issue](https://github.com/4cHLy2/Nagare/issues/new/choose).
+
+## security
+
+Found something exploitable? **Don't open a public issue** — use
+[private reporting](https://github.com/4cHLy2/Nagare/security/advisories/new).
+[SECURITY.md](SECURITY.md) has the scope, the threat model of a no-backend app,
+and notes on hardening a self-hosted deployment.
+
+## license
+
+[MIT](LICENSE). Do what you like with it, keep the copyright notice.
+
+Everything that ships inside the bundle is MIT, ISC or BSD-3-Clause, with the
+notices in [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) — ten packages, no
+copyleft, no attribution strings you have to display in the UI. The webfonts
+come from Google Fonts under the SIL Open Font License and aren't bundled. The
+logo, the screenshots and the code in `src/` are mine, under the MIT license
+above — the colour palette isn't: it's [Catppuccin](https://github.com/catppuccin/catppuccin)
+Mocha (MIT), credited in the notices file.
