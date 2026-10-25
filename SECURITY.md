@@ -55,8 +55,8 @@ rebuilt — pull it again.
   a script context
 - reading or corrupting another project's saved data (`nagare.projects`,
   `nagare.current`) from somewhere it shouldn't be reachable
-- a path that makes the app talk to the network at all beyond the webfonts
-  below — exfiltrating a budget would need that
+- a path that makes the app talk to the network at all, beyond loading its own
+  files from the origin that served it — exfiltrating a budget would need that
 - the default `Dockerfile` / `nginx.conf` serving something exploitable, e.g.
   path traversal out of `/usr/share/nginx/html`
 - CI: anything giving untrusted code the `GITHUB_TOKEN`, the `packages: write`
@@ -86,11 +86,10 @@ rebuilt — pull it again.
 
 Worth knowing before you go looking:
 
-- **Network at runtime:** webfonts only — `fonts.googleapis.com` and
-  `fonts.gstatic.com`, from `<head>` in [`index.html`](index.html). Your budget
-  never leaves the browser, but those two requests do tell Google your IP and
-  that you loaded the page. Self-host the fonts if that bothers you; nothing else
-  breaks.
+- **Network at runtime:** none beyond the origin that served the page. The
+  webfonts are bundled (`@fontsource/*`, imported in
+  [`src/main.tsx`](src/main.tsx)) and come from the same `/assets/` as the JS,
+  so no third party learns your IP or that you loaded the page.
 - **No** cookies, analytics, telemetry, service worker, or third-party scripts.
 - **Storage:** `nagare.projects` (saved list) and `nagare.current` (last open)
   in `localStorage`. Nothing else, no IndexedDB.
@@ -113,12 +112,11 @@ Worth knowing before you go looking:
   add_header X-Content-Type-Options "nosniff"     always;
   add_header X-Frame-Options        "SAMEORIGIN"  always;
   add_header Referrer-Policy        "no-referrer" always;
-  add_header Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'self'" always;
+  add_header Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'self'" always;
   ```
 
   `style-src 'unsafe-inline'` is needed because React writes inline `style`
-  attributes; the `googleapis`/`gstatic` hosts are the webfonts (drop both if
-  you self-host them); `img-src blob:` is the PNG export rasterising an SVG
+  attributes; `img-src blob:` is the PNG export rasterising an SVG
   blob through an `<img>`. Nothing in the app makes an XHR or `fetch` call, so
   `connect-src 'self'` costs you nothing. If you add these inside `nginx.conf`
   itself, mind that nginx's `add_header` doesn't merge: a `location` block with
