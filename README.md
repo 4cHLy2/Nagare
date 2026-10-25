@@ -126,10 +126,11 @@ and notes on hardening a self-hosted deployment.
 
 [MIT](LICENSE). Do what you like with it, keep the copyright notice.
 
-Everything that ships inside the bundle is MIT, ISC or BSD-3-Clause, with the
+The code that ships inside the bundle is MIT, ISC or BSD-3-Clause, with the
 notices in [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) — ten packages, no
-copyleft, no attribution strings you have to display in the UI. The webfonts
-come from Google Fonts under the SIL Open Font License and aren't bundled. The
+copyleft, no attribution strings you have to display in the UI. The three
+webfonts are bundled too, from [Fontsource](https://fontsource.org), under the
+SIL Open Font License 1.1; their notice is in the same file. The
 logo, the screenshots and the code in `src/` are mine, under the MIT license
 above — the colour palette isn't: it's [Catppuccin](https://github.com/catppuccin/catppuccin)
 Mocha (MIT), credited in the notices file.
