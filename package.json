@@ -16,14 +16,18 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
+    "build:pages": "tsc --noEmit && vite build --base=/Nagare/",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/eb-garamond": "^5.3.0",
+    "@fontsource/jetbrains-mono": "^5.3.0",
+    "@fontsource/shippori-mincho": "^5.3.0",
     "d3-sankey": "^0.12.3",
-    "lucide-react": "^1.50.0",
-    "react": "^19.3.0",
-    "react-dom": "^19.3.0",
+    "lucide-react": "^1.58.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
     "zustand": "^5.0.15"
   },
   "devDependencies": {
